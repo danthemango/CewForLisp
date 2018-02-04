@@ -1,0 +1,17 @@
+#! /usr/bin/gcl -f 
+
+;; include the lisp-cew module
+include(cew.cl)
+
+;; init error counts
+cew_Variables
+
+;; load module to test
+(load "../../Lifo.cl")
+
+;; run tests
+cew_Ncase(13,(setq lifo0 (new)), lifo0, ()) ;; succeeds
+cew_Ncase(14,(psh lifo0 7), (size lifo0), 1) ;; fails, since I screwed the Lifo up
+
+;; output error counts
+cew_Summary
